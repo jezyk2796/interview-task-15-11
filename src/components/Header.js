@@ -1,8 +1,8 @@
-const Header = () => {
+const Header = ({value, type}) => {
   return (
-    <header>
-      <h1>ATM Machine</h1>
-    </header>
+    <div>
+      {type === 'primary' ? <h1>{value}</h1> : <h3>{value}</h3>}
+    </div>
   );
 }
 

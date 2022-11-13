@@ -15,11 +15,16 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <div>
-        <h3>Your money: { moneyAmount }</h3>
-      </div>
-      {currentView === 'welcome' ?
+      <Header value="ATM machine" type="primary" />
+      <Header value={`Your money: ${moneyAmount}`} />
+      {
+        currentView === 'deposit' ?
+        <Header value="Deposit money"/>
+        : (currentView === 'withdraw') ?
+        <Header value="Withdraw money" />: null
+      }
+      {
+        currentView === 'welcome' ?
         <div>
           <ActionButton
             actionName='Withdraw cash'
