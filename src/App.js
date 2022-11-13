@@ -1,8 +1,14 @@
+import { useState } from 'react'
+
 import Header from './components/Header.js'
 import ActionButton from './components/ActionButton.js'
 import KeyboardButton from './components/KeyboardButton.js'
 
 function App() {
+  const [moneyAmount, setMoneyAmount] = useState(0);
+  const [inputValue, setInputValue] = useState('');
+
+
   const onWithdraw = () => {
     console.log('withdraw')
   }
@@ -11,23 +17,35 @@ function App() {
     console.log('deposit')
   }
 
-  const onNumberClick = (keyValue, e) => {
-    document.querySelector('input').value += keyValue;
+  const onNumberClick = keyValue => {
+    setInputValue(prevValue => prevValue += keyValue)
   }
 
   const onBackspaceClick = () => {
-    console.log('backspace')
+    const newValue = inputValue.slice(0, inputValue.length - 1);
+    setInputValue(newValue);
   }
 
   const onClearClick = () => {
-    console.log('clear')
+    setInputValue('');
+  }
+
+  const onAccept = () => {
+    const inputValue = document.querySelector('input').value;
+
+    if (inputValue === '') {
+      return null;
+    } else {
+      setMoneyAmount(prevAmount => prevAmount + parseInt(inputValue));
+      setInputValue('');
+    }
   }
 
   return (
     <div>
       <Header />
       <div>
-        <h3>Your money: {'test value'}</h3>
+        <h3>Your money: { moneyAmount }</h3>
       </div>
       <div>
         <ActionButton
@@ -40,7 +58,12 @@ function App() {
         />
       </div>
       <div>
-        <input type="text" readOnly />
+        <input
+          type="text"
+          readOnly
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+        />
         <div>
           <KeyboardButton value="1" onClick={() => onNumberClick(1)} />
           <KeyboardButton value="2" onClick={() => onNumberClick(2)} />
@@ -63,7 +86,7 @@ function App() {
         </div>
         <div>
           <button>Cancel</button>
-          <button>Accept</button>
+          <button onClick={onAccept}>Accept</button>
         </div>
       </div>
     </div>
