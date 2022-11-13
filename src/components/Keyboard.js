@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import KeyboardButton from "./KeyboardButton";
+import KeyboardDisplay from "./KeyboardDisplay";
 
 const Keyboard = ({moneyAmount, setMoneyAmount, currentView, setView}) => {
   const [inputValue, setInputValue] = useState('');
@@ -40,10 +42,8 @@ const Keyboard = ({moneyAmount, setMoneyAmount, currentView, setView}) => {
 
   return (
     <div>
-          <input
-            type="text"
-            readOnly
-            value={inputValue}
+          <KeyboardDisplay
+            inputValue={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
           <div>
