@@ -1,4 +1,4 @@
-const KeyboardButton = ({ value, onClick }) => {
+const KeyboardButton = ({value, onClick}) => {
   return (
     <button onClick={onClick}>
       { value }

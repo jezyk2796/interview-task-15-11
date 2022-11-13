@@ -1,4 +1,4 @@
-const ActionButton = ({ actionName, onClick }) => {
+const ActionButton = ({actionName, onClick}) => {
   return (
     <button onClick={onClick}>
       { actionName }

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import Header from './components/Header.js'
 import ActionButton from './components/ActionButton.js'
-import Keyboard from './components/Keyboard.js'
+import Keyboard from './components/keyboard/Keyboard.js'
 
 function App() {
   const [currentView, setView] = useState('welcome');
@@ -29,16 +29,14 @@ function App() {
             actionName='Deposit money'
             onClick={onDeposit}
           />
-        </div>
-        : null
-      }
-      {currentView !== 'welcome' ?
+        </div> :
         <Keyboard
           moneyAmount={moneyAmount}
           setMoneyAmount={setMoneyAmount}
           currentView={currentView}
           setView={setView}
-        /> : null}
+        />
+      }
     </div>
   );
 }
