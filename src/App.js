@@ -4,6 +4,8 @@ import Header from './components/Header.js'
 import ActionButton from './components/ActionButton.js'
 import Keyboard from './components/keyboard/Keyboard.js'
 
+import appStyles from './App.module.css';
+
 function App() {
   const [currentView, setView] = useState('welcome');
   const [moneyAmount, setMoneyAmount] = useState(0);
@@ -14,18 +16,16 @@ function App() {
   const onDeposit = () => setView('deposit');
 
   return (
-    <div>
+    <div className={appStyles.container}>
       <Header value="ATM machine" type="primary" />
       <Header value={`Your money: ${moneyAmount}`} />
-      {
-        currentView === 'deposit' ?
-        <Header value="Deposit money"/>
-        : (currentView === 'withdraw') ?
-        <Header value="Withdraw money" />: null
+      {currentView !== 'welcome' ?
+        <Header
+          value={currentView === 'deposit' ? 'Deposit money' : 'Withdraw money'}
+          isActionHeader={true} /> : null
       }
-      {
-        currentView === 'welcome' ?
-        <div>
+      {currentView === 'welcome' ?
+        <div className={appStyles.actionButtonsContainer}>
           <ActionButton
             actionName='Withdraw cash'
             onClick={onWithdraw}

@@ -1,0 +1,10 @@
+.keyboardDisplay {
+  height: 40px;
+  font-size: 22px;
+  outline: none;
+  cursor: default;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-bottom: 30px;
+}

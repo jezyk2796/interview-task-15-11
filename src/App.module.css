@@ -1,0 +1,15 @@
+.container {
+  width: 560px;
+  height: 500px;
+  border: 1px solid #808080;
+  border-radius: 15px;
+  padding: 20px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.actionButtonsContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 100px;
+}

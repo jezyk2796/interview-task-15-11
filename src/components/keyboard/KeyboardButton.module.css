@@ -1,0 +1,27 @@
+.keyboardButton {
+    min-width: 90px;
+    height: 40px;
+}
+
+.decisionButton {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 900;
+}
+
+.acceptButton {
+  background-color: green;
+}
+
+.acceptButton:hover {
+  background-color: #005d00;
+}
+
+.returnButton {
+  background-color: red;
+}
+
+.returnButton:hover {
+  background-color: #8e0000;
+}

@@ -1,6 +1,15 @@
-const KeyboardButton = ({value, onClick}) => {
+import keyboardButtonStyles from './KeyboardButton.module.css';
+
+const KeyboardButton = ({value, onClick, isReturnButton, isAcceptButton}) => {
   return (
-    <button onClick={onClick}>
+    <button
+      className={`
+        ${keyboardButtonStyles.keyboardButton}
+        ${isReturnButton || isAcceptButton ? keyboardButtonStyles.decisionButton : null}
+        ${isReturnButton ? keyboardButtonStyles.returnButton : null}
+        ${isAcceptButton ? keyboardButtonStyles.acceptButton : null}
+      `}
+      onClick={onClick}>
       { value }
     </button>
   );

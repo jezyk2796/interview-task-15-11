@@ -1,6 +1,8 @@
+import actionButtonStyles from './ActionButton.module.css';
+
 const ActionButton = ({actionName, onClick}) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} className={actionButtonStyles.actionButton}>
       { actionName }
     </button>
   );

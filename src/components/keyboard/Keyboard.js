@@ -3,6 +3,8 @@ import { useState } from "react";
 import KeyboardButton from "./KeyboardButton";
 import KeyboardDisplay from "./KeyboardDisplay";
 
+import keyboardStyles from "./Keyboard.module.css"
+
 const Keyboard = ({moneyAmount, setMoneyAmount, currentView, setView}) => {
   const [inputValue, setInputValue] = useState('');
 
@@ -44,35 +46,51 @@ const Keyboard = ({moneyAmount, setMoneyAmount, currentView, setView}) => {
   }
 
   return (
-    <div>
+    <div className={keyboardStyles.keyboardContainer}>
       <KeyboardDisplay
         inputValue={inputValue}
         onChange={e => setInputValue(e.target.value)}
       />
-      <div>
+      <div className={keyboardStyles.row}>
         <KeyboardButton value="1" onClick={() => onNumberClick(1)} />
         <KeyboardButton value="2" onClick={() => onNumberClick(2)} />
         <KeyboardButton value="3" onClick={() => onNumberClick(3)} />
       </div>
-      <div>
+      <div className={keyboardStyles.row}>
         <KeyboardButton value="4" onClick={() => onNumberClick(4)} />
         <KeyboardButton value="5" onClick={() => onNumberClick(5)} />
         <KeyboardButton value="6" onClick={() => onNumberClick(6)} />
       </div>
-      <div>
+      <div className={keyboardStyles.row}>
         <KeyboardButton value="7" onClick={() => onNumberClick(7)} />
         <KeyboardButton value="8" onClick={() => onNumberClick(8)} />
         <KeyboardButton value="9" onClick={() => onNumberClick(9)} />
       </div>
-      <div>
+      <div className={keyboardStyles.row}>
+        <KeyboardButton value="Clear input" onClick={onClearClick} />
         <KeyboardButton value="0" onClick={() => onNumberClick(0)} />
         <KeyboardButton value="Backspace" onClick={onBackspaceClick} />
-        <KeyboardButton value="Clear input" onClick={onClearClick} />
       </div>
-      <div>
-        <KeyboardButton value="Return" onClick={() => setView('welcome')} />
-        {currentView === 'deposit' ? <KeyboardButton value="Accept" onClick={onAcceptDeposit} /> : null}
-        {currentView === 'withdraw' ? <KeyboardButton value="Accept" onClick={onAcceptWithdraw} /> : null}
+      <div className={`${keyboardStyles.row} ${keyboardStyles.lastRow}`}>
+        <KeyboardButton
+          value="Return"
+          isReturnButton={true}
+          onClick={() => setView('welcome')}
+        />
+        {currentView === 'deposit' ?
+          <KeyboardButton
+            value="Accept"
+            onClick={onAcceptDeposit}
+            isAcceptButton={true}
+          /> : null
+        }
+        {currentView === 'withdraw' ?
+          <KeyboardButton
+            value="Accept"
+            onClick={onAcceptWithdraw}
+            isAcceptButton={true}
+          /> : null
+        }
       </div>
     </div>
   )
